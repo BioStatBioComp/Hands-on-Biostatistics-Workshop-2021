@@ -1,0 +1,98 @@
+---
+title: "Hands-on Biostatistics 2021"
+author: "Group Hands-on Project"
+date: "15/7/2021"
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
+---
+
+
+## Data description
+
+For the hands-on project we will be using a simulated dataset related to Multiple Sclerosis (MS) patients (ms_data.csv). The dataset contains data for 25 patients with MS. The outcome studied here is the the Expanded Disability Status Scale (EDSS). The EDSS scale ranges from 0 to 10 and is based on an examination by a neurologist. A scale 0 indicates normal condition. A high value indicates high dissability progression, with 10 indicating death due to MS. A detailed description of EDSS can be found here: http://www.nationalmssociety.org/nationalmssociety/media/msnationalfiles/brochures/10-2-3-29-edss_form.pdf.
+
+We will consider data for the EDSS measured at first visit and last visit (interval of 6 years). Covariates that were believed to influence EDSS scale are age, MS type and gender. 
+
+
+### Data file
+
+File in drive: ms_data.csv
+
+- Variables:
+
+1. ID: patient id
+
+2. Gender: (male; female)
+
+3. Age_first: age of patient at baseline, numeric
+
+4. MS_type: Type of MS (RRMS; SPMS; PPMS) See more here https://www.mssociety.org.uk/about-ms/types-of-ms
+
+5. edss_first: EDSS measured at first visit
+
+6. edss_last: EDSS measured at the last visit
+ 
+
+ 
+## Assignment
+
+
+```{r, echo=FALSE}
+
+#Set working directory 
+setwd("C:/Users/user/Desktop") # Use the session menu better
+
+#Save the data you have in drive in your working directory and read it with this code:
+
+library(readr)
+ms_data <- read_csv("ms_data.csv", 
+    col_types = cols(age_first = col_number(), 
+        edss_first = col_number(), edss_last = col_number(), 
+        gender = col_factor(levels = c("Female", 
+            "Male")), ms_type = col_factor(levels = c("RRMS", 
+            "PPMS", "SPMS")), patient_id = col_number()))
+
+
+```
+
+
+
+Of key interest is to study:
+
+1) Whether the average EDSS has changed from the first visit to the last visit
+
+2) Whether the average EDSS at the last visit is different for male and female patients 
+
+3) Whether the average EDSS at the last visit is different for patients with different MS type.
+
+4) Whether age is related to EDSS at the first and the last visit.
+
+
+Note that you should support each research question with a statistical analysis performed in R (use this notebook) which is appropriate for your data.
+
+
+
+## Remarks
+
+- For each question, motivate your choice of techniques, estimation methods, assumptions
+you make, and describe possible, problems.
+
+- For each of the above questions, summarize your conclusions and document them as a report to a
+clinician.
+
+
+- Work and document your project in an R Notebook (you will find this in classroom) and submit it via group Classroom before July 17, 2021. 
+
+
+
+                                  
+                                  
+                                  
+                                  
+                                   Good luck!
+
+
+
+
